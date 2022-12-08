@@ -10,6 +10,8 @@ import configuration from './config/configuration';
 import { LoggerMiddleware } from './logger/logger.middleware';
 import { CategoryModule } from './category/category.module';
 import { Category } from './category/entities/category.entity';
+import { PostModule } from './post/post.module';
+import { Post } from './post/entities/post.entity';
 
 @Module({
   imports: [
@@ -24,13 +26,14 @@ import { Category } from './category/entities/category.entity';
       username: process.env.DATABASE_USER,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      entities: [Category],
+      entities: [Category, Post],
       synchronize: true,
       ssl: {
         ca: readFileSync('ca-certificate.crt').toString(),
       },
     }),
-    CategoryModule
+    CategoryModule,
+    PostModule
   ],
   controllers: [AppController, CatsController],
   providers: [AppService, CatsService],
