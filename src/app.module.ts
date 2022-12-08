@@ -31,6 +31,7 @@ import { Post } from './post/entities/post.entity';
       ssl: {
         ca: readFileSync('ca-certificate.crt').toString(),
       },
+      autoLoadEntities: true,
     }),
     CategoryModule,
     PostModule

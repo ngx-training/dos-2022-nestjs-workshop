@@ -14,7 +14,11 @@ export class PostService {
   }
 
   async findAll(): Promise<Post[]> {
-    return this.postRepository.find();
+    return this.postRepository.find({
+      relations: {
+        category: true
+      }
+    });
   }
 
   async findOne(id: string): Promise<Post> {

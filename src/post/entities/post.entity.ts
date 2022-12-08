@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Category } from "src/category/entities/category.entity";
+import { Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Post {
@@ -19,4 +20,7 @@ export class Post {
 
     @Column({ type: 'timestamp', nullable: true })
     updated_at: string;
+
+    @ManyToOne(type => Category, category => category.posts, { cascade: ['insert', 'update']})
+    category: Category;
 }
