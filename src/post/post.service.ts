@@ -22,7 +22,10 @@ export class PostService {
   }
 
   async findOne(id: string): Promise<Post> {
-    return this.postRepository.findOneBy({id});
+    return this.postRepository.findOne({
+      where: { id: id },
+      relations: { category: true }
+    });
   }
 
   async update(id: string, updatePostDto: UpdatePostDto) {

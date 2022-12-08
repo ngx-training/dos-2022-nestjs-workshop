@@ -22,7 +22,10 @@ export class CategoryService {
   }
 
   async findOne(id: string): Promise<Category> {
-    return this.categoryRepository.findOneBy({id});
+    return this.categoryRepository.findOne({
+      where: { id: id },
+      relations: { posts: true }
+    });
   }
 
   async update(id: string, updateCategoryDto: UpdateCategoryDto) {
