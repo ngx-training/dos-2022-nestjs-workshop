@@ -22,6 +22,7 @@ export class PostService {
   }
 
   async update(id: string, updatePostDto: UpdatePostDto) {
+    updatePostDto.updated_at = new Date().toISOString();
     return this.postRepository.update({id}, updatePostDto);
   }
 

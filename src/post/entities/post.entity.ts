@@ -16,4 +16,7 @@ export class Post {
 
     @Column({ type: 'timestamp', default: new Date() })
     created_at: string;
+
+    @Column({ type: 'timestamp', nullable: true })
+    updated_at: string;
 }
