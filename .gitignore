@@ -2,6 +2,10 @@
 /dist
 /node_modules
 
+# env and ssl certificate
+.env
+ca-certificate.crt
+
 # Logs
 logs
 *.log
